@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.djalmahenry.pokedex.R
+import br.com.djalmahenry.pokedex.api.PokemonRepository
 import br.com.djalmahenry.pokedex.domain.Pokemon
 import br.com.djalmahenry.pokedex.domain.PokemonType
 import br.com.djalmahenry.pokedex.view.PokemonAdapter
@@ -33,7 +34,11 @@ class DashboardFragment : Fragment() {
             "Charmander",
             listOf(PokemonType("Fire"))
         )
+
         val pokemons = listOf(charmander, charmander, charmander, charmander)
+
+        val pokemonsApi = PokemonRepository.listPokemons()
+
         val layoutManager = LinearLayoutManager(getContext())
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = PokemonAdapter(pokemons)

@@ -1,13 +1,13 @@
-package br.com.djalmahenry.pokedex.viewmodel
+package br.com.djalmahenry.pokedex.view.ui.pokedex
 
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.djalmahenry.pokedex.api.PokemonRepository
 import br.com.djalmahenry.pokedex.domain.Pokemon
 
-class PokemonViewModel : ViewModel() {
+
+class PokedexViewModel : ViewModel() {
+
     var pokemons = MutableLiveData<List<Pokemon?>>()
 
     init {

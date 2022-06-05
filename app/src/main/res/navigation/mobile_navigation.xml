@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="br.com.djalmahenry.pokedex.view.ui.dashboard.DashboardFragment"
+        android:name="br.com.djalmahenry.pokedex.view.ui.pokedex.PokedexFragment"
         android:label="@string/title_pokedex"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_pokedex" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="br.com.djalmahenry.pokedex.view.ui.notifications.NotificationsFragment"
+        android:name="br.com.djalmahenry.pokedex.view.ui.about.AboutFragment"
         android:label="@string/title_about"
         tools:layout="@layout/fragment_about" />
 </navigation>

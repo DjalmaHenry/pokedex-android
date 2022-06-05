@@ -1,10 +1,10 @@
-package br.com.djalmahenry.pokedex.view.ui.notifications
+package br.com.djalmahenry.pokedex.view.ui.about
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class AboutViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"

@@ -3,4 +3,6 @@
     <string name="title_home">Início</string>
     <string name="title_pokedex">Pokédex</string>
     <string name="title_about">Sobre</string>
+    <string name="loading_pokemons">Carregando Pokémons...</string>
+    <string name="pokebola">Pokébola</string>
 </resources>

@@ -1,6 +1,7 @@
 package br.com.djalmahenry.pokedex.view.ui.dashboard
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import br.com.djalmahenry.pokedex.view.PokemonAdapter
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -26,26 +28,49 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
                 ViewModelProvider(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val recyclerView = root.findViewById<RecyclerView>(R.id.rvPokemons)
+        recyclerView = root.findViewById(R.id.rvPokemons)
 
-        val charmander = Pokemon(
-            "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png",
-            1,
-            "Charmander",
-            listOf(PokemonType("Fire"))
-        )
+//        val charmander = Pokemon(
+//            "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png",
+//            1,
+//            "Charmander",
+//            listOf(PokemonType("Fire"))
+//        )
+//
+//        val pokemons = listOf(charmander, charmander, charmander, charmander)
 
-        val pokemons = listOf(charmander, charmander, charmander, charmander)
+        Thread(Runnable {
+            loadPokemons()
+        }).start()
 
-        val pokemonsApi = PokemonRepository.listPokemons()
-
-        val layoutManager = LinearLayoutManager(getContext())
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = PokemonAdapter(pokemons)
-        //val textView: TextView = root.findViewById(R.id.text_dashboard)
-        //dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-        //    textView.text = it
-        //})
         return root
+    }
+
+    private fun loadPokemons() {
+        val pokemonsApiResult = PokemonRepository.listPokemons()
+        pokemonsApiResult?.results?.let {
+            val pokemons: List<Pokemon?> = it.map { pokemonResult ->
+                val number = pokemonResult.url
+                    .replace("https://pokeapi.co/api/v2/pokemon/", "")
+                    .replace("/", "").toInt()
+                val pokemonApiResult = PokemonRepository.getPokemon(number)
+
+                pokemonApiResult?.let {
+                    Pokemon(
+                        pokemonApiResult.id,
+                        pokemonApiResult.name,
+                        pokemonApiResult.types.map { type ->
+                            type.type
+                        }
+                    )
+                }
+            }
+            val layoutManager = LinearLayoutManager(getContext())
+
+            recyclerView.post {
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = PokemonAdapter(pokemons)
+            }
+        }
     }
 }

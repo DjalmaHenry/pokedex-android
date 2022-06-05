@@ -19,8 +19,7 @@ class AboutFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        aboutViewModel =
-                ViewModelProvider(this).get(AboutViewModel::class.java)
+        aboutViewModel = ViewModelProvider(this).get(AboutViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_about, container, false)
         val textView: TextView = root.findViewById(R.id.text_notifications)
         aboutViewModel.text.observe(viewLifecycleOwner, Observer {

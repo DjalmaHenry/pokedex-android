@@ -22,4 +22,10 @@
         android:name="br.com.djalmahenry.pokedex.view.ui.about.AboutFragment"
         android:label="@string/title_about"
         tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/navigation_djalma"
+        android:name="br.com.djalmahenry.pokedex.view.ui.profiles.djalma.DjalmaFragment"
+        android:label="Perfil de Djalma"
+        tools:layout="@layout/fragment_djalma" />
 </navigation>

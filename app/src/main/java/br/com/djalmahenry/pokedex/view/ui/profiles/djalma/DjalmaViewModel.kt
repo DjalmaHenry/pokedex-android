@@ -6,8 +6,14 @@ import androidx.lifecycle.ViewModel
 
 class DjalmaViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
+    private val _djalma = MutableLiveData<String>().apply {
         value = "Djalma Henrique"
     }
-    val text: LiveData<String> = _text
+    val djalma: LiveData<String> = _djalma
+
+    private val _infos = MutableLiveData<String>().apply {
+        value = "Estudante de Ciência da computação e " +
+                "Desenvolvedor Web e Mobile Full Stack"
+    }
+    val infos: LiveData<String> = _infos
 }

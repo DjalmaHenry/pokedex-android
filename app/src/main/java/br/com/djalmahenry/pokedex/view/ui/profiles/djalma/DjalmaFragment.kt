@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.com.djalmahenry.pokedex.R
+import br.com.djalmahenry.pokedex.databinding.CustomPopupDjalmaBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import android.app.AlertDialog as AlertDialog1
 
 class DjalmaFragment : Fragment() {
     private lateinit var djalmaViewModel: DjalmaViewModel
@@ -33,6 +36,9 @@ class DjalmaFragment : Fragment() {
         djalmaViewModel.infos.observe(viewLifecycleOwner, Observer {
             textViewInfos.text = it
         })
+
+        val buttonMoreInfo: Button = root.findViewById(R.id.button_more)
+        buttonMoreInfo.setOnClickListener { showCustomPopup() }
 
         val buttonPortfolio: Button = root.findViewById(R.id.button_portfolio)
         buttonPortfolio.setOnClickListener { view ->
@@ -65,5 +71,32 @@ class DjalmaFragment : Fragment() {
         }
 
         return root
+    }
+
+    private fun showCustomPopup() {
+        val dialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialog)
+
+        val popupBinding: CustomPopupDjalmaBinding =
+            CustomPopupDjalmaBinding.inflate(layoutInflater, null, false)
+
+        val root = popupBinding.root
+
+        val textViewTitle: TextView = root.findViewById(R.id.text_title)
+        djalmaViewModel.titlePopup.observe(viewLifecycleOwner, Observer {
+            textViewTitle.text = it
+        })
+
+        val textViewAboutOne: TextView = root.findViewById(R.id.text_about_one)
+        djalmaViewModel.contentPopupOne.observe(viewLifecycleOwner, Observer {
+            textViewAboutOne.text = it
+        })
+
+        val textViewAboutTwo: TextView = root.findViewById(R.id.text_about_two)
+        djalmaViewModel.contentPopupTwo.observe(viewLifecycleOwner, Observer {
+            textViewAboutTwo.text = it
+        })
+
+        dialog.setContentView(popupBinding.root)
+        dialog.show()
     }
 }

@@ -34,10 +34,4 @@ class AboutFragment : Fragment() {
         cardView.setOnClickListener({ v -> Navigation.findNavController(v).navigate(R.id.navigation_djalma) })
         return root
     }
-
-    fun djalmaProfile(view: View) {
-        val home = HomeFragment()
-//        view.findNavController().navigate(home.id)
-        Navigation.findNavController(view).navigate(home.id);
-    }
 }

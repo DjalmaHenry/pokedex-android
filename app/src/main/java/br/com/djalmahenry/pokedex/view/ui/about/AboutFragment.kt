@@ -31,7 +31,9 @@ class AboutFragment : Fragment() {
         })
 
         val cardView: CardView = root.findViewById(R.id.cardView_djalma)
-        cardView.setOnClickListener({ v -> Navigation.findNavController(v).navigate(R.id.navigation_djalma) })
+        cardView.setOnClickListener { v ->
+            Navigation.findNavController(v).navigate(R.id.navigation_djalma)
+        }
         return root
     }
 }

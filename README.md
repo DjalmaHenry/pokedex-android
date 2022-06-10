@@ -24,7 +24,7 @@
 ## 📷 Telas de perfil de Djalma
 
 <div style="display: inline_block" align="center">
-    <img alt="informações" src="https://user-images.githubusercontent.com/45500812/172979350-abc9c722-4234-4e01-85c0-6775e8baeafe.jpeg" width="20%">
+    <img alt="informações" src="https://user-images.githubusercontent.com/45500812/172986353-aab61e5d-0061-48e3-a1ac-17f80d6bcaee.jpeg" width="20%">
     <img alt="sobre mim" src="https://user-images.githubusercontent.com/45500812/172979413-bf7a2910-4ce2-4edb-8e0f-4585fcb3fc08.jpeg" width="20%">
 </div>
 
